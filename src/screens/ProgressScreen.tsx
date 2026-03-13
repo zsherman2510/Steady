@@ -3,7 +3,7 @@ import { Screen } from '../../components/Screen';
 import { Card } from '../../components/Card';
 import { theme } from '../../lib/theme';
 
-export function ProgressScreen({ onBack }: { onBack: () => void }) {
+export function ProgressScreen({ onBack, appState }: { onBack: () => void; appState?: any; actions?: any }) {
   return (
     <Screen>
       <Pressable onPress={onBack} style={styles.back}><Text style={styles.backText}>← Back</Text></Pressable>
