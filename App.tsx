@@ -31,15 +31,18 @@ export default function App() {
   const [appState, setAppState] = useState<AppState>(initialAppState);
 
   const actions = useMemo(() => ({
-    finishOnboarding(profile: Pick<UserProfile, 'primaryGoal' | 'speakingSituations'>) {
+    finishOnboarding(profile: Pick<UserProfile, 'primaryGoal' | 'speakingSituations' | 'confidenceLevel'>, plan: any) {
       setAppState((prev) => ({
         ...prev,
         hasOnboarded: true,
+        hasUnlockedPaywall: true,
+        selectedPlan: plan,
         user: {
           name: prev.user?.name ?? '',
           email: prev.user?.email ?? '',
           primaryGoal: profile.primaryGoal,
           speakingSituations: profile.speakingSituations,
+          confidenceLevel: profile.confidenceLevel,
         },
       }));
       setScreen('auth');
@@ -53,6 +56,7 @@ export default function App() {
           email: payload.email,
           primaryGoal: prev.user?.primaryGoal ?? 'Start conversations more easily',
           speakingSituations: prev.user?.speakingSituations ?? [],
+          confidenceLevel: prev.user?.confidenceLevel ?? 2,
         },
       }));
       setScreen('home');
