@@ -33,6 +33,12 @@ export function HomeScreen({ onBack, appState }: Props) {
           <Text style={styles.helper}>Steady uses this to prioritize the kind of reps you get first.</Text>
         </Card>
 
+        <Card>
+          <Text style={styles.statLabel}>Access</Text>
+          <Text style={styles.statValue}>{user?.role === 'admin' ? 'Admin controls enabled' : 'Member access only'}</Text>
+          <Text style={styles.helper}>Sensitive writes should stay behind backend authorization checks, even if the UI hides the action.</Text>
+        </Card>
+
         <View style={styles.row}>
           <View style={styles.col}>
             <Card>

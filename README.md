@@ -5,33 +5,47 @@ Steady is a mobile app concept for people who stutter to practice real-world spe
 ## Stack
 - Expo / React Native
 - Convex
-- Convex Auth planned next
+- Better Auth integrated with Convex
 
 ## Included
 - Calm premium dark theme
 - Welcome / onboarding screen
-- Auth placeholder screen
+- Email/password authentication with Better Auth + Convex
 - Home dashboard placeholder
 - Scenario library placeholder
 - Rewrite-my-sentence placeholder
 - AI practice placeholder
 - Daily challenge placeholder
 - Progress placeholder
-- Starter Convex schema
+- Convex schema and auth backend scaffolding
 
 ## Run
 ```bash
 npm install
+npx convex dev
 npx expo start
 ```
 
-## Convex
+## Environment
 ```bash
-npx convex dev
+cp .env.example .env.local
 ```
 
-## Auth note
-Convex Auth was not forced in yet because the package stack conflicted during install. The app is scaffolded cleanly so auth can be added next without dragging in broken dependencies.
+Set:
+- `EXPO_PUBLIC_CONVEX_URL`
+- `EXPO_PUBLIC_CONVEX_SITE_URL`
+- `CONVEX_DEPLOYMENT` if you want the Convex CLI to skip interactive project configuration
+
+Set server-side admin accounts in Convex:
+```bash
+npx convex env set ADMIN_EMAILS "admin@example.com"
+```
+
+## Auth model
+- Expo client sessions are stored with `expo-secure-store`
+- Better Auth handles authentication
+- Convex enforces authorization in backend functions
+- App profile data is scoped to the authenticated user
 
 ## GitHub
 ```bash

@@ -1,6 +1,9 @@
+export type UserRole = 'user' | 'admin';
+
 export type UserProfile = {
   name: string;
   email: string;
+  role: UserRole;
   primaryGoal: string;
   speakingSituations: string[];
   confidenceLevel: number;
